@@ -1,0 +1,39 @@
+/* 3D-герой Dota 2 как декоративный фон в левом верхнем углу страницы. */
+.hero3d {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 40;
+
+  /* Пока модель не загрузилась, место пустует и не мешает кликам */
+  opacity: 0;
+  transition: opacity 0.6s ease;
+
+  /* Герой интерактивен: вращается перетаскиванием мышью */
+  pointer-events: auto;
+  cursor: grab;
+}
+
+.hero3d--ready {
+  opacity: 1;
+}
+
+/* Пока модель не появилась, кликов не перехватываем */
+.hero3d:not(.hero3d--ready) {
+  pointer-events: none;
+}
+
+/* Телефоны: герой — только декорация, не мешает скроллу и кликам */
+@media (max-width: 767px) {
+  .hero3d {
+    pointer-events: none;
+    cursor: default;
+  }
+}
+
+/* Широкие экраны: контент не залезает под героя слева */
+@media (min-width: 1440px) {
+  .app-main {
+    padding-left: clamp(50vw, 760px, 1280px);
+  }
+}

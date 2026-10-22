@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import Hero3D from './components/Hero3D.jsx';
 
 function App() {
   const [status, setStatus] = useState('Проверка сервера...');
@@ -16,21 +17,24 @@ function App() {
   }, []);
 
   return (
-    <main className="min-h-screen bg-slate-950 text-white flex items-center justify-center">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold">
-          Smurf Tracker
-        </h1>
+    <>
+      <Hero3D />
+      <main className="app-main min-h-screen bg-slate-950 text-white flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-4xl font-bold">
+            Smurf Tracker
+          </h1>
 
-        <p className="mt-4 text-slate-400">
-          Backend status:
-          {' '}
-          <span className="text-green-400">
-            {status}
-          </span>
-        </p>
-      </div>
-    </main>
+          <p className="mt-4 text-slate-400">
+            Backend status:
+            {' '}
+            <span className="text-green-400">
+              {status}
+            </span>
+          </p>
+        </div>
+      </main>
+    </>
   );
 }
 
